@@ -1,0 +1,49 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #000;
+}
+.loader {
+    position: relative;
+    background: #fff;
+    width: 500px;
+    height: 40px;
+/* マスク値 */
+/* -webkit-box-reflect: below 0 linear-gradient(transparent, white); */
+    -webkit-box-reflect: below 1px linear-gradient(transparent,#0005);
+}
+.loader::before {
+    content: "";
+    position: absolute;
+    /* inset は CSS のプロパティで、 top, right, bottom, left に対応する一括指定です。これは margin の一括指定における複数値の場合と同じ構文です。 */
+    inset: 0;
+    background: linear-gradient(90deg, #fb0094, #0000ff, #00ff00, #ffff00, #fb0094, #0000ff, #00ff00, #ffff00,#fb0094);
+    animation: animate 20s linear infinite;
+    background-size: 500%;
+}
+.loader::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #fb0094, #0000ff, #00ff00, #ffff00, #fb0094, #0000ff, #00ff00, #ffff00,#fb0094);
+    animation: animate 20s linear infinite;
+    background-size: 500%;
+    filter: blur(20px);
+}
+@keyframes animate {
+    0% {
+        /* background: ～% ～%  左右、上下の順で位置を割合で指定
+        [例] 0% 0% [左上寄せ]、50% 50% [中央寄せ]*/
+        background-position: 0 0;
+    }
+    0% {
+        background-position: 500% 0;
+    }
+}
